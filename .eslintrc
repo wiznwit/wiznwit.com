@@ -4,6 +4,10 @@
     "modules": true
   },
 
+  "parserOptions": {
+    "sourceType": "module"
+  },
+
   "env": {
     "browser": false,
     "es6": true,
