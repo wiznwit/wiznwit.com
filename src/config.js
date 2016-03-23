@@ -1,7 +1,7 @@
-const config = {
+export const config = {
   port: 80,
   host: 'localhost',
   babelifyFiles: [
-    'index',
+    'js/index',
   ],
 };
