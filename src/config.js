@@ -5,3 +5,5 @@ export const config = {
     'js/index',
   ],
 };
+
+export default config;
