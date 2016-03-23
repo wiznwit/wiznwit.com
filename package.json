@@ -1,0 +1,30 @@
+{
+  "name": "wiznwit.com",
+  "version": "0.23.5",
+  "author": "Wizards & Witches <team@wiznwit.com>",
+  "license": "AGPL-3.0",
+  "dependencies": {
+    "express": "4.13.4",
+    "magic-root": "github:magic/root"
+  },
+  "contributors": [
+    {
+      "name": "jascha ehrenreich",
+      "email": "jascha@magicshifter.net",
+      "github": "jaeh"
+    },
+    {
+      "name": "philipp tiefenbacher",
+      "email": "wizard23@magicshifter.net",
+      "github": "wizard23"
+    },
+    {
+      "name": "tom peak",
+      "github": "tompeak"
+    }
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/wiznwit/wiznwit.com.git"
+  }
+}
