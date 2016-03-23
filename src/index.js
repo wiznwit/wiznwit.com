@@ -1,12 +1,7 @@
-import express from 'express';
-import { Magic } from 'magic-root';
+import { Magic, conjure } from 'magic-root';
+import { config } from './config';
 
-const app = express();
-
-Object.keys(config).forEach(
-  key =>
-    app.set(key, config[key])
-);
+const app = conjure(config);
 
 app.set('cwd', __dirname);
 
