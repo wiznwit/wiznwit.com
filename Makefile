@@ -1,4 +1,4 @@
-export CONTAINER_NAME=magicshifter-net
+export CONTAINER_NAME=wiznwit-com
 
 # default arguments:
 # export NODE_BIN=node_modules/.bin
