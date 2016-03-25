@@ -10,7 +10,7 @@ RUN apk add --no-cache git
 
 WORKDIR /srv
 
-COPY out/ .
+COPY dist/ .
 
 COPY package.json .
 
