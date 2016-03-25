@@ -1,0 +1,41 @@
+*
+  box-sizing border-box
+
+body
+  font-family 'Segoe UI', 'Lucida Grande', Ubuntu, Arial, sans-serif
+  font-size 5vw
+  line-height 1
+
+#hero
+  color $hero-text-color
+  text-align center
+  margin 10vh 0 0
+  svg#hat,
+  h1,
+  h2 span
+    opacity 0
+    animation-name fade-in
+
+  svg#hat
+    width 30vw
+    max-width 30vh
+    height 30vw
+    max-height 30vh
+
+  .branding
+    h1
+      animation-delay .4s
+      margin .5em 0
+      font-size 1.5em
+
+    h2
+      margin 0 0 1em
+
+      span
+        animation-delay 1s
+
+        &:first-child
+          animation-delay .7s
+
+        &:last-child
+          animation-delay 1.3s
