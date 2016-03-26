@@ -3,36 +3,45 @@ $fill-2 = #DAD4EC
 $fill-3 = #8F7DC6
 
 svg#hat
-  .p0
-    fill url(#g1)
+  width 30vw
+  max-width 30vh
+  height 30vw
+  max-height 30vh
+
+  &:hover .star
+    transform rotate(3600deg)
+    transition rotate 3000ms
+
+  .p1,.p2, .p3, .p4, .p5,
+  .star, .wand
+    opacity 0
+    animation-name fade-in
+    animation-duration 400ms
+    animation-fill-mode forwards
+
   .p1
+    animation-delay 100ms
     fill url(#g2)
   .p2
-    fill url(#g3)
+    animation-delay 200ms
+    fill url(#g2)
   .p3
-    fill url(#g4)
+    animation-delay 300ms
+    fill url(#g3)
   .p4
-    fill $fill-1
+    animation-delay 400ms
+    fill url(#g4)
   .p5
-    fill $white
-  .p6
+    animation-delay 500ms
     fill url(#g5)
-  .p7
-    fill url(#g6)
-  .p8
-    fill url(#g7)
-  .p9
-    fill url(#g8)
-  .p10
-    fill $fill-2
-  .p11
-    fill url(#g9)
-  .p12
-    fill url(#g10)
-  .p13
-    fill url(#g11)
-  .p14
-    fill url(#g12)
+
+  .star,
+  .wand
+    animation-delay 600ms
+
+  .star,
+  .wand
+    fill $white
 
   stop[offset="0"]
     stop-color $fill-1
