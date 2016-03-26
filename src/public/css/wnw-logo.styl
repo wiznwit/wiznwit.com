@@ -3,21 +3,28 @@ $fill-2 = #DAD4EC
 $fill-3 = #8F7DC6
 
 svg#hat
-  width 30vw
-  max-width 30vh
   height 30vw
   max-height 30vh
+  max-width 30vh
+  width 30vw
 
-  &:hover .star
-    transform rotate(3600deg)
-    transition rotate 3000ms
+  .star
+    transform rotate(0deg)
+
+  &.animated .star
+    animation-delay 0ms
+    animation-duration .5s
+    animation-iteration-count 1
+    animation-name spin
+    animation-timing-function linear
+    transform-origin center
 
   .p1,.p2, .p3, .p4, .p5,
-  .star, .wand
+  .wand
     opacity 0
-    animation-name fade-in
     animation-duration 400ms
     animation-fill-mode forwards
+    animation-name fade-in
 
   .p1
     animation-delay 100ms
@@ -35,7 +42,6 @@ svg#hat
     animation-delay 500ms
     fill url(#g5)
 
-  .star,
   .wand
     animation-delay 600ms
 
