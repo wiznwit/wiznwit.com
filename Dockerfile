@@ -1,7 +1,7 @@
 # wizardsatwork/grundstein/postgres dockerfile
 # VERSION 0.0.1
 
-FROM magic:root
+FROM wiznwit:magic
 
 MAINTAINER Wizards & Witches <dev@wiznwit.com>
 ENV REFRESHED_AT 2016-28-03
