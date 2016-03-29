@@ -11,7 +11,6 @@ WORKDIR /srv
 COPY package.json ./
 
 ARG NODE_ENV
-ARG CACHEBUST
 
 ENV NODE_ENV=production
 
