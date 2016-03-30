@@ -9,4 +9,4 @@ export CONTAINER_NAME=wiznwit-com
 # export NODEJS_OUT_FILE=out/index.js
 
 
-include node_modules/magic-root/bin/Makefile
+include bin/Makefile
