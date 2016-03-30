@@ -81,7 +81,7 @@ function run() {
 
 function ip() {
   echo "gather ip"
-  ip=$(python $MAGIC_BIN/ip.py $CONTAINER_NAME)
+  ip=$(python ./bin/ip.py $CONTAINER_NAME)
   echo "container $CONTAINER_NAME started with ip: $ip"
   echo $ip > ./SERVER_IP
   echo "ip of container is $ip"
