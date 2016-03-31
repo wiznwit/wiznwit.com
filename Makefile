@@ -27,6 +27,8 @@ CLI:=./bin/cli.sh
 	rm \
 	run \
 	ip \
+	update \
+	status \
 	help
 
 
@@ -77,6 +79,12 @@ run:
 	${CLI} $@
 
 ip:
+	${CLI} $@
+
+update:
+	${CLI} $@
+
+status:
 	${CLI} $@
 
 help:
