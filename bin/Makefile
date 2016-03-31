@@ -1,4 +1,4 @@
-CLI:=./node_modules/magic-root/bin/cli.sh
+CLI:=./bin/cli.sh
 
 .PHONY: \
 	all \
