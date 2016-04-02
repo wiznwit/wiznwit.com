@@ -8,7 +8,7 @@ export CONTAINER_NAME=wiznwit-com
 # export NODEJS_SRC_FILES=src/config.js src/index.js
 # export NODEJS_OUT_FILE=out/index.js
 
-CLI:=./bin/cli.sh
+CLI:=./cli.sh
 
 .PHONY: \
 	all \
