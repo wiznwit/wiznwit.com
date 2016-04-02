@@ -9,8 +9,17 @@ NODEJS_DIST_DIR=${NODEJS_DIST_DIR:-"dist"}
 
 DIST_DIR=${DIST_DIR:-dist}
 
+function echo-start() {
+  echo "START: $@"
+}
+
+function echo-end() {
+  echo "FINISHED: $@"
+}
+
+
 function dev() {
-  echo "start dev environment"
+  echo-start "dev environment"
   build-src
 
   export NODE_ENV=development;
@@ -20,7 +29,7 @@ function dev() {
 }
 
 function build() {
-  echo "start building $CONTAINER_NAME docker container"
+  echo-start "building $CONTAINER_NAME docker container"
 
   build-node-js
 
@@ -29,15 +38,15 @@ function build() {
   --build-arg NODE_ENV=production \
     . # dot!
 
-  echo "finished building docker container"
+  echo-end "building docker container"
 }
 
 function build-root() {
-  echo "start building magic-root"
+  echo-start "building magic-root"
 
   ${MAGIC_DIR}/cli.sh docker-build
 
-  echo "finished building magic-root"
+  echo-end "building magic-root"
 }
 
 function build-src() {
@@ -45,7 +54,7 @@ function build-src() {
 }
 
 function build-node-js() {
-  echo "start building nodejs"
+  echo-start "building nodejs"
 
   mkdir -p $DIST_DIR/
 
@@ -53,11 +62,11 @@ function build-node-js() {
     --out-dir $NODEJS_DIST_DIR \
     $NODEJS_SRC_FILES # order is important
 
-  echo "finished building nodejs"
+  echo-end "building nodejs"
 }
 
 function build-express-dirs() {
-  echo "start copying express views and public dir"
+  echo-start "copying express views and public dir"
 
   mkdir -p $DIST_DIR/
 
@@ -65,13 +74,13 @@ function build-express-dirs() {
     src/public src/views \
     $DIST_DIR/
 
-  echo "finished copying express views and public dir"
+  echo-end "copying express views and public dir"
 }
 
 function run() {
   docker-rm
 
-  echo "start docker container"
+  echo-start "docker container"
   docker run \
     --name $CONTAINER_NAME \
     --detach \
@@ -81,68 +90,87 @@ function run() {
 }
 
 function ip() {
-  echo "gather ip"
+  echo-start "gather ip"
+
   ip=$(python ./bin/ip.py $CONTAINER_NAME)
-  echo "container $CONTAINER_NAME started with ip: $ip"
   echo $ip > ./SERVER_IP
-  echo "ip of container is $ip"
+
+  echo-end "container $CONTAINER_NAME started with ip: $ip"
 }
 
 function docker-rm() {
-  echo "delete docker container"
+  echo-start "delete docker container"
+
   docker rm -f $CONTAINER_NAME
-  echo "delete docker container finished"
+
+  echo-end "delete docker container"
 }
 
 function lint() {
-  echo "start lint tasks"
+  echo-start "lint tasks"
+
   eslint
   jade-lint
   stylint
-  echo "linting finished"
+
+  echo-end "linting"
 }
 
 function eslint() {
-  echo "eslint start"
+  echo-start "eslint"
+
   $NODE_BIN/eslint \
     src
-  echo "eslint done"
+
+  echo-end "eslint"
 }
 
 function eslint-fix() {
-  echo "lint-fix start"
+  echo-start "lint-fix"
+
   $NODE_BIN/eslint \
     --fix \
     src
-  echo "lint-fix end"
+
+  echo-end "lint-fix"
+}
+
+function install() {
+  echo-start "install magic-root including devDependencies"
+
+  npm i --dev
+
+  echo-end "install magic-root including devDependencies"
 }
 
 function pug-lint() {
-  echo "pug-lint start"
+  echo-start "pug-lint"
+
   $NODE_BIN/pug-lint \
     ./src/views/*
-  echo "pug-lint finished"
+
+  echo-end "pug-lint"
 }
 
 function stylint() {
-  echo "stylint start"
+  echo-start "stylint"
 
   $NODE_BIN/stylint \
     src/public/css
 
-  echo "stylint finished"
+  echo-end "stylint"
 }
 
 function clean() {
-  echo "cleaning up out dir"
+  echo-start "cleaning up out dir"
 
   rm -rf $DIST_DIR
 
-  echo "cleaning up finished"
+  echo-end "cleaning up"
 }
 
 function logs() {
-  echo "connecting to container logs: $CONTAINER_NAME"
+  echo-start "connecting to container logs: $CONTAINER_NAME"
   docker logs --follow $CONTAINER_NAME
 }
 
@@ -150,7 +178,7 @@ function debug() {
   docker-rm
   build
 
-  echo "connecting to container $CONTAINER_NAME"
+  echo-start "connecting to container $CONTAINER_NAME"
   docker run \
     --interactive \
     --tty \
