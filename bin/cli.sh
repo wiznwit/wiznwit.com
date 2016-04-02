@@ -15,12 +15,14 @@ function dev() {
 
   export NODE_ENV=development;
   $NODE_BIN/nodemon \
-    --exec "$NODE_BIN/babel-node src/index.js" \
-    --watch ./src
+    --exec "$NODE_BIN/babel-node src/server/index.js" \
+    --watch ./src/server/
 }
 
 function build() {
   echo "start building $CONTAINER_NAME docker container"
+
+  build-node-js
 
   docker build \
   --tag $CONTAINER_NAME \
@@ -39,7 +41,6 @@ function build-root() {
 }
 
 function build-src() {
-  build-node-js
   build-express-dirs
 }
 
