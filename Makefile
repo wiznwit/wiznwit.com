@@ -16,8 +16,10 @@ CLI:=./cli.sh
 	build \
 	build-root \
 	build-src \
+	install \
 	lint \
-	lint-fix \
+	eslint \
+	eslint-fix \
 	jade-lint \
 	pug-lint \
 	stylint \
@@ -48,10 +50,16 @@ build-root:
 build-src:
 	${CLI} $@
 
+install:
+	${CLI} $@
+
 lint:
 	${CLI} $@
 
-lint-fix:
+eslint:
+	${CLI} $@
+
+eslint-fix:
 	${CLI} $@
 
 jade-lint:
