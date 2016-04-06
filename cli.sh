@@ -6,6 +6,7 @@ MAGIC_DIR=${MAGIC_DIR:-node_modules/magic-root}
 MAGIC_BIN=${MAGIC_BIN:-node_modules/magic-root/bin}
 NODEJS_SRC_FILES=${NODEJS_FILES:-"src/server"}
 NODEJS_DIST_DIR=${NODEJS_DIST_DIR:-"dist"}
+CLIENT_SRC_FILES=${CLIENT_SRC_FILES:-"src/client"}
 
 DIST_DIR=${DIST_DIR:-dist}
 
@@ -17,10 +18,8 @@ function echo-end() {
   echo "FINISHED: $@"
 }
 
-
 function dev() {
   echo-start "dev environment"
-  build-src
 
   export NODE_ENV=development;
   $NODE_BIN/nodemon \
@@ -30,8 +29,6 @@ function dev() {
 
 function build() {
   echo-start "building $CONTAINER_NAME docker container"
-
-  build-node-js
 
   docker build \
   --tag $CONTAINER_NAME \
@@ -47,10 +44,6 @@ function build-root() {
   ${MAGIC_DIR}/cli.sh docker-build
 
   echo-end "building magic-root"
-}
-
-function build-src() {
-  build-express-dirs
 }
 
 function build-node-js() {
@@ -71,7 +64,7 @@ function build-express-dirs() {
   mkdir -p $DIST_DIR/
 
   cp -r \
-    src/public src/views \
+    $CLIENT_SRC_FILES \
     $DIST_DIR/
 
   echo-end "copying express views and public dir"
@@ -84,6 +77,9 @@ function run() {
   docker run \
     --name $CONTAINER_NAME \
     --detach \
+    --env DIST_DIR=$DIST_DIR \
+    --env SERVER_SRC_FILES=$NODEJS_SRC_FILES \
+    --env CLIENT_SRC_FILES=$CLIENT_SRC_FILES \
     $CONTAINER_NAME
 
   ip
@@ -147,7 +143,7 @@ function pug-lint() {
   echo-start "pug-lint"
 
   $NODE_BIN/pug-lint \
-    ./src/views/*
+    $CLIENT_SRC_FILES/views/*
 
   echo-end "pug-lint"
 }
@@ -156,7 +152,7 @@ function stylint() {
   echo-start "stylint"
 
   $NODE_BIN/stylint \
-    src/public/css
+    $CLIENT_SRC_FILES/public/css
 
   echo-end "stylint"
 }
@@ -201,7 +197,6 @@ make [task]
 running make without task starts a dev env
 
 dev       - run dev environment
-build-src - build express app
 lint      - eslint javascript sources
 lint-fix  - eslint and fix javascript sources
 pug-lint  - run pug-lint (html)
