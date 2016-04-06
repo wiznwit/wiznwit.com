@@ -65,7 +65,7 @@ function build-express-dirs() {
 
   cp -r \
     $CLIENT_SRC_FILES \
-    $DIST_DIR/
+    $DIST_DIR/client/
 
   echo-end "copying express views and public dir"
 }
