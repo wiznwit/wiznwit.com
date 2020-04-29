@@ -29,6 +29,7 @@
   },
   "homepage": "https://wiznwit.com",
   "dependencies": {
+    "@magic-modules/gdpr": "0.0.15",
     "@magic-modules/language-switch": "0.0.1",
     "@magic/core": "0.0.69"
   },
