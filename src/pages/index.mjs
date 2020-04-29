@@ -1,7 +1,4 @@
 export const View = state => [
-  Social(state),
-  LanguageSwitch(state),
-
   div({ class: 'hex__container' }, [
     div({ class: 'hex hero' }, [Hex(), WNWLogo(state)]),
 
@@ -15,17 +12,6 @@ export const View = state => [
         p('clowns, and scientists.'),
 
         h2([p('we are wizards and'), p(' witches at work')]),
-
-        Link({ to: '/impressum/' }, 'impressum'),
-      ]),
-    ]),
-
-    div({ class: 'hex small hexpaper' }, [
-      div({ class: 'container' }, [
-        Link({ class: 'hex__link', to: 'https://www.facebook.com/HexPapier/' }, [
-          Hex(),
-          span('Hexpaper'),
-        ]),
       ]),
     ]),
   ]),
