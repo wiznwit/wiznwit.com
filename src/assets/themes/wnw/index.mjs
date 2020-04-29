@@ -25,6 +25,11 @@ export const vars = {
   fill_2: '#8F7DC6',
   subtleColor: '#9c9788',
   lessSubtleColor: '#666666',
+
+  link: {
+    dark: '#4527A0',
+    light: '#4527A0',
+  },
 }
 
 export default (v = {}) => {
@@ -51,7 +56,7 @@ export default (v = {}) => {
         '"Helvetica Neue"',
         'sans-serif',
       ].join(','),
-      fontSize: '14px',
+      fontSize: '19px',
       lineHeight: '1.2',
     },
     'h1, h2': {
@@ -131,6 +136,7 @@ export default (v = {}) => {
 
       '&:hover': {
         textDecoration: 'underline',
+        color: v.subtleColor,
       },
 
       '&.button': {
@@ -160,6 +166,16 @@ export default (v = {}) => {
       color: v.subtleColor,
       textAlign: 'center',
       margin: '2em 0 0',
+    },
+
+    '.Credits': {
+      a: {
+        color: v.link.dark,
+
+        '&:hover': {
+          color: v.subtleColor,
+        },
+      },
     },
 
     // utilities
@@ -193,7 +209,11 @@ export default (v = {}) => {
         width: '60%',
         height: '60%',
         top: '20%',
-        left: '20%',
+        margin: '0 auto',
+
+        '&.WNWLogo': {
+          top: '10%',
+        },
 
         '&.annotated': {
           color: v.subtleColor,
@@ -218,6 +238,14 @@ export default (v = {}) => {
 
     '.add': {
       display: 'none',
+    },
+
+    '@media screen and (min-width: 600px)': {
+      '.hex': {
+        '.hex__content': {
+          top: '20%',
+        },
+      },
     },
   }
 }
