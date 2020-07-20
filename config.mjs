@@ -10,5 +10,5 @@ export default {
 
   FOR_DEATH_CAN_NOT_HAVE_HIM: true,
 
-  HOIST: ['LanguageSwitch', 'Gdpr'],
+  HOIST: ['LanguageSwitch', 'NoSpy'],
 }
